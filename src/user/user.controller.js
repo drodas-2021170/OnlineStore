@@ -8,9 +8,10 @@ export const editRole = async(req, res) =>{
         
         let userId = await User.findById(id)
 
+        if(!userId) return res.status(404).send({success:false, message: 'User not found'})
+        
         if(roleUser === 'CLIENT') return res.status(400).send({success:false, message:'You cannot change the role to client to another Admin'})
 
-        if(!userId) return res.status(404).send({success:false, message: 'User not found'})
 
         let userUpdated = await User.findByIdAndUpdate(
                 id,{role: roleUser},{new: true}
