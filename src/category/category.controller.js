@@ -1,6 +1,24 @@
 import Category from "./category.model.js"
 import Product from "../product/product.model.js"
 
+
+
+export const addDefaultCategory = async(req,res) =>{
+    try {
+        let categoryDef = await Category.findOne({name: 'Default Category'})
+        if(!categoryDef)
+            categoryDef = await Category.create(
+        {
+            name: 'Default Category',
+            description: 'Default category for all products'
+        }
+    )
+    await categoryDef.save()
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error', err})
+    }
+}
 export const addCategory = async(req, res) =>{
     try {
     
@@ -35,9 +53,9 @@ export const updateCategory = async(req,res) =>{
         let data = req.body
 
         let categoryId = await Category.findOne({_id: id})
-        
         if(!categoryId) return res.status(404).send({success: false, message: 'Id not found'})
         
+        if(categoryId.name === 'Default Category') return res.status(403).send({success: false, message:'You can not update default category'})    
         let updatedCategory = await Category.findByIdAndUpdate(
             id, 
             data, 
@@ -62,11 +80,7 @@ export const deleteCategory = async(req,res) =>{
 
         if(!categoryId) return res.status(404).send({success: false, message: 'Category not found'})
 
-        let defaultCategory = await Category.findOne({ name: 'General Product' });
-
-
-        if (!defaultCategory) defaultCategory = await Category.create({ name: 'General Product' , description: 'Default option'});
-        
+        let defaultCategory = await Category.findOne({ name: 'Default Category' });
 
         await Product.updateMany(
             { category: id }, 
