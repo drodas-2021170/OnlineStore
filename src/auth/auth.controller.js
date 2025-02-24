@@ -8,6 +8,29 @@ export const test = (req, res) =>{
     return res.send({message:'Test is running'})
 }
 
+
+export const defaulttAdmin = async(req,res) =>{
+    try {
+        let defaultAdmin =  await User.findOne({name: 'admin'})
+        if(!defaultAdmin)
+            defaultAdmin = await User.create(
+        {
+            name: 'admin',
+            surname: 'admin',
+            username: 'ADMIN',
+            email: 'admin@gmail.com',
+            password: await encrypt(process.env.ADMIN_KEY),
+            phone: '44778899',
+            role: 'ADMIN'
+        }
+    ) 
+    await defaultAdmin.save()
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error', err})
+    }
+}
+
 export const register = async(req,res) =>{
     try {
         let data = req.body
@@ -18,7 +41,7 @@ export const register = async(req,res) =>{
         user.password = await encrypt(user.password)
         await user.save()
 
-        return res.send({success: true, message:`Welcome: ${user.username}`})
+        return res.send({success: true, message:`Hello: ${user.username}`})
     } catch (err) {
         console.error(err)
         return res.status(500).send({success: false, message:'General Error', err})
