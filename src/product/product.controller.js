@@ -24,8 +24,7 @@ export const addProduct = async(req,res) =>{
 
 export const getAll = async(req, res) =>{
     try {
-        
-        let products = await Product.find().populate('category','name description')
+        let products = await Product.find({stock: { $gt: 1 } }).populate('category','name description')
 
         if(!products) return res.status(404).send({success:false, message:'Products not found'})
             return res.send({success:true, message:'Products found', products})
