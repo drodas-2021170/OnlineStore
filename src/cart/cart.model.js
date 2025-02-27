@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const cartSchema = model(
+const cartSchema = Schema(
     {
         user:{
             type: Schema.Types.ObjectId,
@@ -10,12 +10,26 @@ const cartSchema = model(
             type: Schema.Types.ObjectId,
             ref: 'Product',
         }],
-        subTotal:[{
+        quantity:{
+            type:Number,
+        },
+        subTotal:{
             type: Number,
-        }],
-        total:[{
-            type: Number
-        }]
+            default: 0
+        },
+        total:{
+            type: Number,
+            default: 0
+        },
+        status:{
+            type:String,
+            enum:['COMPLETE', 'PENDIENT'],
+            default: 'PENDIENT'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
     }
 )
 
