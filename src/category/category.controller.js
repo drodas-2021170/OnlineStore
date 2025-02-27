@@ -48,7 +48,6 @@ export const getAll = async(req, res) =>{
 
 export const updateCategory = async(req,res) =>{
     try {
-       
         let id = req.body.id
         let data = req.body
 
