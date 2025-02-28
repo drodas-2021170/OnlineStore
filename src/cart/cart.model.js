@@ -6,13 +6,19 @@ const cartSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        product:[{
-            type: Schema.Types.ObjectId,
-            ref: 'Product',
+        product:[
+            {
+                products:{   
+                    type: Schema.Types.ObjectId,
+                    ref: 'Product',
+                },
+                quantity:{
+                    type:Number,
+                },
+                price:{
+                    type:Number
+                }
         }],
-        quantity:{
-            type:Number,
-        },
         subTotal:{
             type: Number,
             default: 0
