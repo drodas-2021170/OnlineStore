@@ -1,9 +1,10 @@
 import { Router } from "express"
-import { getBill } from "./bill.controller.js"
+import { getBill, getMyBill } from "./bill.controller.js"
 import { validateToken } from "../../middlewares/validate.jwt.js"
 
 const api = Router()
 
-api.get('/getBill',[validateToken], getBill)
+api.post('/getBill',[validateToken], getBill)
+api.get('/',[validateToken],getMyBill)
 
 export default api
