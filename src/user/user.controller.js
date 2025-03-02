@@ -1,4 +1,5 @@
 'use strict'
+import { checkPassword } from '../../utils/encrypt.js'
 import User from '../user/user.model.js'
 
 export const editRole = async(req, res) =>{
@@ -88,3 +89,21 @@ export const updateUserClient = async(req,res) =>{
     }
 }
 
+
+export const deleteClient = async(req, res) =>{
+    try {
+        let {password} = req.body
+
+        let userI = await User.findById(req.user.uid)
+
+        let match = await checkPassword(userI.password, password)
+
+        if(!match) return res.status(404).send({sucess:false, message:'Incorrect Password'})
+        
+        let deleteClient = await User.findByIdAndUpdate(userI.id, {status: false})
+        return res.send({success:true, message:'Cliente deleted'})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success: false, message:'General Error', err})
+    }
+}
