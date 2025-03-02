@@ -1,0 +1,1091 @@
+{
+	"info": {
+		"_postman_id": "89f8d14c-0a85-41fc-a459-ee1d159d2734",
+		"name": "OnlineStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37951898"
+	},
+	"item": [
+		{
+			"name": "Login and Register",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Dilan André",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Rodas Aldana",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Dilis",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "drodas@kinal.edu.gtsss",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1223478M*7m",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "80997788",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\",data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userData",
+									"value": "ADMIN",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1223478M*7m",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "admin123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "ADMIN",
+					"item": [
+						{
+							"name": "UpdateRole",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "67bc84516d85a73ea7606d42",
+											"type": "text"
+										},
+										{
+											"key": "roleUser",
+											"value": "CLIENT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3300/v1/user/updateRole",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"v1",
+										"user",
+										"updateRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateUser",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "67ad6df292375eef7041bbc0",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Sergio Daniel",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "funcaos",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "alo",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "dsdsdsd",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3300/v1/user/updateUser",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"v1",
+										"user",
+										"updateUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUser",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "67bc8369c6c3119c3d55ea05",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3300/v1/user/deleteUser",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"v1",
+										"user",
+										"deleteUser"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CLIENT",
+					"item": [
+						{
+							"name": "UpdateClient",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "67af43eba814b24215244c40",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Dilan André",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3300/v1/user/updateClient",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"v1",
+										"user",
+										"updateClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCliente",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "1223478M*7m",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Dilan André",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3300/v1/user/deleteCLIENT",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"v1",
+										"user",
+										"deleteCLIENT"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "AddCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Videojuegos21",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Productos relacionados al gaming",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/category/addCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"category",
+								"addCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "skip",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatedCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "67ae8856c6c80730ae563c98",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carne",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67ae8856c6c80730ae563c98",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/category/updateCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"category",
+								"updateCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "67bc8b4b43952ce543836d32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/category/deleteCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"category",
+								"deleteCategory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AddProduct",
+			"item": [
+				{
+					"name": "AddProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Plays22222",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Play",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67ae8856c6c80730ae563c98",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/addProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"addProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carne molida",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Carne procediente de la vaca ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "Q45.45 ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67ad3235f4b60b7d2fc0df55",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMostProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carne molida",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Carne procediente de la vaca ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "Q45.45 ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67ad3235f4b60b7d2fc0df55",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/getMostProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"getMostProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEspecificProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carne",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/getEspecificProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"getEspecificProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ceroStock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/getStock",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"getStock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatedProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Crema",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67bc894b5796a1fd8516cfd6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/updatedProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"updatedProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletedProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "67bc8bd74abf8d931dafecc3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/product/deletedProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"product",
+								"deletedProduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "addCART",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "products",
+									"value": "67c3e4f89145b45356ca63a4",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/cart/addCart",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"cart",
+								"addCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "products",
+									"value": "67bfe4325609273b39d0cf06",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/cart/",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bill",
+			"item": [
+				{
+					"name": "addBill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idClient",
+									"value": "67bfd67fb97926e17ec8f5f8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/bill/getBill",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"bill",
+								"getBill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserBill",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3300/v1/bill/",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"bill",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMyHistorial",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3300/v1/bill/myHistorial",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"bill",
+								"myHistorial"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
