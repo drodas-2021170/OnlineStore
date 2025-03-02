@@ -12,7 +12,7 @@ export const addCart = async(req,res) =>{
         
         if(!product) return res.status(404).send({success: false, message:'Product not found'})
         
-        let carts = await Cart.findOne({user: req.user.uid}).populate('product', ' -_id')
+        let carts = await Cart.findOne({user: req.user.uid, status:'PENDIENT'} ).populate('product', ' -_id')
         
         if(product.stock === 0) return res.status(404).send({success:false, message:'This product is out of stock'})
         
@@ -25,7 +25,11 @@ export const addCart = async(req,res) =>{
                     if(carts.product[i].products.toString() === product.id){
                             console.log('Si hay un producto asi')
                             found = true;
-                            carts.product[i].quantity = carts.product[i].quantity + Number(data.quantity) 
+                            if(carts.product[i].quantity + Number(data.quantity) > product.stock){
+                                return res.status(403).send({success:false, message:'You cannot add more products that the stock has'})
+                            }else{
+                                carts.product[i].quantity = carts.product[i].quantity + Number(data.quantity) 
+                            }
                             break
                         } 
                     }
