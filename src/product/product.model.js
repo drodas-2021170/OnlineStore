@@ -28,6 +28,10 @@ const productSchema = Schema (
         status:{
             type: Boolean,
             default: true
+        },
+        updateAt:{
+            type:Number,
+            default:0
         }
     }
 )
