@@ -51,7 +51,6 @@ export const register = async(req,res) =>{
 export const login = async(req,res) =>{
     try {
         let {userData, password} = req.body
-
         let user = await User.findOne(
             {
                 $or:[
@@ -60,6 +59,7 @@ export const login = async(req,res) =>{
                 ]
             }
         )
+        if(user.status === false) return res.status(404).send({success: false, message:'User not found'})
         if(user && await checkPassword(user.password,password)){
             let loggedUser ={   
                 uid: user._id,
