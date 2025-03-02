@@ -1,5 +1,6 @@
 import Product from "./product.model.js"
 import Category from "../category/category.model.js"
+import Bill from "../bill/bill.model.js"
 
 export const addProduct = async(req,res) =>{
     try {
@@ -34,6 +35,17 @@ export const getAll = async(req, res) =>{
     }
 }
 
+
+export const getMostProduct = async(req,res) =>{
+    try {
+        let mostProduct = await Product.find().sort({updateAt: -1})
+        return res.send({message: 'Productos mas vendidos', mostProduct})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error', err})
+    }
+}
+
 export const updateProduct = async(req,res) =>{
     try {
         let id = req.body.id
@@ -58,6 +70,25 @@ export const updateProduct = async(req,res) =>{
         return res.status(500).send({success: false, message: 'General Error', err})
     }
 } 
+
+export const getEspecificProduct = async(req,res) =>{
+    try {
+        let {name , category} = req.body
+        let productSearch = await Product.find(
+            {
+                $or:[
+                    {name: name},
+                    {category: category}
+                ]
+            }
+        )
+        if(productSearch.length === 0) return res.status(404).send({success: false, message:'Products not found for this filter'})
+            return res.send({success: true, message:'Product Found',productSearch,total: productSearch.length})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error', err})
+    }
+}
 
 export const ceroStock  = async(req, res) =>{
     try {
@@ -87,5 +118,6 @@ export const deleteProduct = async(req,res) =>{
         return res.status(500).send({success: false, message:'General Error', err})
     }
 }
+
 
 
