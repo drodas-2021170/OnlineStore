@@ -12,6 +12,9 @@ const cartSchema = Schema(
                     type: Schema.Types.ObjectId,
                     ref: 'Product',
                 },
+                name:{
+                    type: String
+                },
                 quantity:{
                     type:Number,
                 },
@@ -25,7 +28,7 @@ const cartSchema = Schema(
         },
         status:{
             type:String,
-            enum:['COMPLETE', 'PENDIENT'],
+            enum:['COMPLETE', 'PENDIENT','EDIT'],
             default: 'PENDIENT'
         },
         createdAt: {
