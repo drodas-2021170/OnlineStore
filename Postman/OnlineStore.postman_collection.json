@@ -29,12 +29,12 @@
 								},
 								{
 									"key": "username",
-									"value": "Dili",
+									"value": "Dili2",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "drodas@kinal.edu.gt",
+									"value": "drod2as@kinal.edu.gt",
 									"type": "text"
 								},
 								{
@@ -88,24 +88,24 @@
 								{
 									"key": "userData",
 									"value": "ADMIN",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "admin123456789",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "userData",
 									"value": "Dili",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "1223478M*7m",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -148,7 +148,7 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67c50593a32fbb3ceffb019e",
+											"value": "67c5de4018da390183ae53b4",
 											"type": "text"
 										},
 										{
@@ -189,12 +189,12 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67c50593a32fbb3ceffb019e",
+											"value": "67c5de4018da390183ae53b4",
 											"type": "text"
 										},
 										{
 											"key": "name",
-											"value": "Dilan André",
+											"value": "Sergio Gomez",
 											"type": "text"
 										},
 										{
@@ -205,7 +205,7 @@
 										},
 										{
 											"key": "role",
-											"value": "alo",
+											"value": "ADMIN",
 											"type": "text",
 											"disabled": true
 										},
@@ -248,7 +248,7 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67c50593a32fbb3ceffb019e",
+											"value": "67c5de4018da390183ae53b4",
 											"type": "text"
 										}
 									]
@@ -385,7 +385,7 @@
 								},
 								{
 									"key": "description",
-									"value": "Default Category",
+									"value": "Pc",
 									"type": "text"
 								}
 							]
@@ -424,7 +424,7 @@
 							"urlencoded": [
 								{
 									"key": "skip",
-									"value": "2",
+									"value": "4",
 									"type": "text",
 									"disabled": true
 								},
@@ -467,12 +467,12 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67c50bb946e4a7302a119db2",
+									"value": "67c5de0418da390183ae53a3",
 									"type": "text"
 								},
 								{
 									"key": "name",
-									"value": "Games",
+									"value": "Default Catego",
 									"type": "text"
 								},
 								{
@@ -514,7 +514,7 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67c50bf046e4a7302a119db6",
+									"value": "67c5dfb82e3d083231415593",
 									"type": "text"
 								}
 							]
@@ -555,27 +555,27 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Pera",
+									"value": "Manzana",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Pera del mercado",
+									"value": "Manzana",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "3",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "stock",
-									"value": "20",
+									"value": "1000",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "67c50bd746e4a7302a119db4",
+									"value": "67c5dfbf2e3d083231415595",
 									"type": "text"
 								}
 							]
@@ -742,14 +742,14 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Manzana Verde",
-									"type": "text"
+									"value": "Razer Keyboard",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "category",
-									"value": "67c50bd746e4a7302a119db4",
-									"type": "text",
-									"disabled": true
+									"value": "67c5dfb82e3d083231415593",
+									"type": "text"
 								}
 							]
 						},
@@ -817,19 +817,19 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67c50de89a297b8c09c6467a",
+									"value": "67c5e0c42e3d0832314155aa",
 									"type": "text"
 								},
 								{
 									"key": "stock",
 									"value": "20",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "category",
-									"value": "67c50bd746e4a7302a119db4",
-									"type": "text",
-									"disabled": true
+									"value": "67c5dfef2e3d083231415599",
+									"type": "text"
 								}
 							]
 						},
@@ -864,7 +864,7 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67c50df69a297b8c09c6467d",
+									"value": "67c5e0e92e3d0832314155ad",
 									"type": "text"
 								}
 							]
@@ -905,13 +905,19 @@
 							"urlencoded": [
 								{
 									"key": "products",
-									"value": "67c50e039a297b8c09c64680",
+									"value": "67c5e0c42e3d0832314155aa",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "18",
+									"value": "5",
 									"type": "text"
+								},
+								{
+									"key": "lessQuantity",
+									"value": "2",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -958,6 +964,42 @@
 								"v1",
 								"cart",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idProduct",
+									"value": "67c5e0c42e3d0832314155aa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/cart/deleteProdyct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"cart",
+								"deleteProdyct"
 							]
 						}
 					},
@@ -1017,7 +1059,7 @@
 							"urlencoded": [
 								{
 									"key": "idCliente",
-									"value": "67c50317a32fbb3ceffb0199",
+									"value": "67c5de0418da390183ae53a8",
 									"type": "text"
 								}
 							]
@@ -1078,19 +1120,14 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "idCliente",
-									"value": "67c50317a32fbb3ceffb0199",
-									"type": "text"
-								},
-								{
-									"key": "newIva",
-									"value": "0.16",
+									"key": "idBill",
+									"value": "67c5e577aa105713287a6db3",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3300/v1/bill/updateProduct",
+							"raw": "localhost:3300/v1/bill/updateBill",
 							"host": [
 								"localhost"
 							],
@@ -1098,7 +1135,7 @@
 							"path": [
 								"v1",
 								"bill",
-								"updateProduct"
+								"updateBill"
 							]
 						}
 					},
