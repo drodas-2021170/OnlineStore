@@ -25,11 +25,11 @@ export const getBill = async(req, res) =>{
                 price: product.price,
             })
 
-            /*if(product.stock<cart.product[i].quantity){
+            if(product.stock<cart.product[i].quantity){
                 await Cart.findByIdAndUpdate(cart.id, {status: 'EDIT'})
                 await bill.save()
                 return res.status(404).send({success:false, message:'Please talk with an Admin to change your bill'})
-            }*/
+            }
 
             await Product.findByIdAndUpdate(product.id, {stock: product.stock - cart.product[i].quantity})
             await Product.findByIdAndUpdate(product.id, {updateAt: product.updateAt + 1})
@@ -63,7 +63,7 @@ export const getClientBills = async(req,res) =>{
 
 export const getHystorial = async(req,res) =>{
     try {
-        let bill = await Bill.find({user: req.user.uid})
+        let bill = await Bill.find({user: req.user.uid, status: 'PERMITED'})
         .populate('cart', 'subTotal')
         .populate('user', 'name surname username -_id')
         
@@ -75,16 +75,26 @@ export const getHystorial = async(req,res) =>{
     }
 }
 
+
+
 export const updateBill = async(req,res) =>{
     try {
-        let {idCliente, newIva} = req.body
+        let {idCliente, idBill} = req.body
         let user = await User.findById(idCliente)
-        let cart = await Cart.findOne({user: user.id }&&{status: 'PENDIENT'})
-        let bill = await Bill.findOne({cart:cart.id})
-        await Bill.findByIdAndUpdate(bill.id,{total: cart.subTotal + (cart.subTotal* newIva)},{new:true})
-        let bill2 = await Bill.findByIdAndUpdate(bill.id,{status: 'COMPLETED'},{new:true})
-        if(!bill) return res.status(404).send({success:false, message:'Bill not updated'})
-            return res.send({success:true, message:'Bill Updated', bill2})
+
+        let bill = await Bill.findOne({_id: idBill, status:'PERMITED'})
+        if(!bill) return res.status(404).send({success:false, message:'Bills not found'})
+        console.log(idBill)
+        for(let i =0; i<bill.product.length; i++){
+            console.log(bill.product[i].quantity)
+
+            let product = await Product.findById(bill.product[i].products)
+            let oldStock = product.stock
+            let oldQuantity = bill.product[i].quantity
+            await Product.findByIdAndUpdate(product.id, {stock: oldStock + oldQuantity})
+        }
+        let updateBill = await Bill.findByIdAndUpdate(bill.id,{status: 'ANULED'})
+        return res.send({sucess:true, message:'Bill anuled'})
     } catch (err) {
         console.error(err)
         return res.status(500).send({success:false, message:'General Error', err})
