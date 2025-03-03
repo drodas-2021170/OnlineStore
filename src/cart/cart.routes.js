@@ -6,6 +6,6 @@ import { addCartValidate } from "../../middlewares/validators.js"
 const api = Router()
 
 api.post('/addCart', [validateToken, addCartValidate], addCart) 
-api.get('/', getCart)
+api.get('/', [validateToken],getCart)
 
 export default api
