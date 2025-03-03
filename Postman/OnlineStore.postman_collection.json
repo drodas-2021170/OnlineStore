@@ -29,12 +29,12 @@
 								},
 								{
 									"key": "username",
-									"value": "Dilis",
+									"value": "Dili",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "drodas@kinal.edu.gtsss",
+									"value": "drodas@kinal.edu.gt",
 									"type": "text"
 								},
 								{
@@ -44,7 +44,7 @@
 								},
 								{
 									"key": "phone",
-									"value": "80997788",
+									"value": "33442101",
 									"type": "text"
 								}
 							]
@@ -92,14 +92,20 @@
 								},
 								{
 									"key": "password",
-									"value": "1223478M*7m",
+									"value": "admin123456789",
+									"type": "text"
+								},
+								{
+									"key": "userData",
+									"value": "Dili",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "admin123456789",
-									"type": "text"
+									"value": "1223478M*7m",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -142,7 +148,7 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67bc84516d85a73ea7606d42",
+											"value": "67c50593a32fbb3ceffb019e",
 											"type": "text"
 										},
 										{
@@ -183,12 +189,12 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67ad6df292375eef7041bbc0",
+											"value": "67c50593a32fbb3ceffb019e",
 											"type": "text"
 										},
 										{
 											"key": "name",
-											"value": "Sergio Daniel",
+											"value": "Dilan André",
 											"type": "text"
 										},
 										{
@@ -242,7 +248,7 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "67bc8369c6c3119c3d55ea05",
+											"value": "67c50593a32fbb3ceffb019e",
 											"type": "text"
 										}
 									]
@@ -295,7 +301,8 @@
 										{
 											"key": "role",
 											"value": "ADMIN",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -332,18 +339,6 @@
 											"key": "password",
 											"value": "1223478M*7m",
 											"type": "text"
-										},
-										{
-											"key": "name",
-											"value": "Dilan André",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "role",
-											"value": "ADMIN",
-											"type": "text",
-											"disabled": true
 										}
 									]
 								},
@@ -385,12 +380,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Videojuegos21",
+									"value": "Default Category",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Productos relacionados al gaming",
+									"value": "Default Category",
 									"type": "text"
 								}
 							]
@@ -429,13 +424,13 @@
 							"urlencoded": [
 								{
 									"key": "skip",
-									"value": "0",
+									"value": "2",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "0",
+									"value": "2",
 									"type": "text",
 									"disabled": true
 								}
@@ -472,23 +467,17 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67ae8856c6c80730ae563c98",
+									"value": "67c50bb946e4a7302a119db2",
 									"type": "text"
 								},
 								{
 									"key": "name",
-									"value": "",
+									"value": "Games",
 									"type": "text"
 								},
 								{
 									"key": "description",
 									"value": "Carne",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "category",
-									"value": "67ae8856c6c80730ae563c98",
 									"type": "text",
 									"disabled": true
 								}
@@ -525,7 +514,7 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67bc8b4b43952ce543836d32",
+									"value": "67c50bf046e4a7302a119db6",
 									"type": "text"
 								}
 							]
@@ -566,27 +555,27 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Plays22222",
+									"value": "Pera",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Play",
+									"value": "Pera del mercado",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "50",
+									"value": "3",
 									"type": "text"
 								},
 								{
 									"key": "stock",
-									"value": "50",
+									"value": "20",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "67ae8856c6c80730ae563c98",
+									"value": "67c50bd746e4a7302a119db4",
 									"type": "text"
 								}
 							]
@@ -753,12 +742,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Carne",
+									"value": "Manzana Verde",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "",
+									"value": "67c50bd746e4a7302a119db4",
 									"type": "text",
 									"disabled": true
 								}
@@ -828,19 +817,19 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "",
+									"value": "67c50de89a297b8c09c6467a",
 									"type": "text"
 								},
 								{
-									"key": "name",
-									"value": "Crema",
-									"type": "text",
-									"disabled": true
+									"key": "stock",
+									"value": "20",
+									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "67bc894b5796a1fd8516cfd6",
-									"type": "text"
+									"value": "67c50bd746e4a7302a119db4",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -875,7 +864,7 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "67bc8bd74abf8d931dafecc3",
+									"value": "67c50df69a297b8c09c6467d",
 									"type": "text"
 								}
 							]
@@ -916,12 +905,12 @@
 							"urlencoded": [
 								{
 									"key": "products",
-									"value": "67c3e4f89145b45356ca63a4",
+									"value": "67c50e039a297b8c09c64680",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "1",
+									"value": "18",
 									"type": "text"
 								}
 							]
@@ -957,18 +946,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "products",
-									"value": "67bfe4325609273b39d0cf06",
-									"type": "text"
-								},
-								{
-									"key": "quantity",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "localhost:3300/v1/cart/",
@@ -1003,13 +981,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "idClient",
-									"value": "67bfd67fb97926e17ec8f5f8",
-									"type": "text"
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "localhost:3300/v1/bill/getBill",
@@ -1042,7 +1014,13 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": []
+							"urlencoded": [
+								{
+									"key": "idCliente",
+									"value": "67c50317a32fbb3ceffb0199",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "localhost:3300/v1/bill/",
@@ -1080,6 +1058,47 @@
 								"v1",
 								"bill",
 								"myHistorial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditBill",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idCliente",
+									"value": "67c50317a32fbb3ceffb0199",
+									"type": "text"
+								},
+								{
+									"key": "newIva",
+									"value": "0.16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/bill/updateProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"bill",
+								"updateProduct"
 							]
 						}
 					},
