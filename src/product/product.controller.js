@@ -114,7 +114,7 @@ export const deleteProduct = async(req,res) =>{
     try {
         let id = req.body.id
         
-        let deleteProduct = await Product.findByIdAndUpdate(id,{status:false})
+        let deleteProduct = await Product.deleteOne({_id:id})
 
         if(!deleteProduct) return res.status(404).send({success: false, message:'Product not found'})
             return res.send({success: true, message:'Product deleted' })
