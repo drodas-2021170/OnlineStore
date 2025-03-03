@@ -25,7 +25,7 @@ export const addProduct = async(req,res) =>{
 
 export const getAll = async(req, res) =>{
     try {
-        let products = await Product.find({stock: { $gt: 1 } }).populate('category','name description')
+        let products = await Product.find({stock: { $gt: 1 } }).populate('category','name description').select('-updateAt')
 
         if(!products) return res.status(404).send({success:false, message:'Products not found'})
             return res.send({success:true, message:'Products found', products})
@@ -52,12 +52,17 @@ export const updateProduct = async(req,res) =>{
         let data = req.body
 
         let productId = await Product.findById({_id:id})
-        let categoryId = await Category.findOne({_id: data.category})
-
-        console.log(categoryId)
-        if(!productId) return res.status(404).send({success:false, message:'Product not found'})
-        if(!categoryId) return res.status(404).send({success:false, message:'Category not found'})    
         
+
+        if(!productId) return res.status(404).send({success:false, message:'Product not found'}) 
+        
+        if(data.category){
+            let categoryId = await Category.findOne({_id: data.category})
+            if(!categoryId){
+                return res.status(404).send({ success: false, message: 'Category not found' });  
+            }
+        }
+
         let editedProduct = await Product.findByIdAndUpdate(
             id, data, {new: true}
         )
@@ -73,7 +78,7 @@ export const updateProduct = async(req,res) =>{
 
 export const getEspecificProduct = async(req,res) =>{
     try {
-        let {name , category} = req.body
+        let {name , category} = req.body    
         let productSearch = await Product.find(
             {
                 $or:[

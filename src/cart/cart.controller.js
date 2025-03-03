@@ -11,7 +11,9 @@ export const addCart = async(req,res) =>{
         let product = await Product.findById(products)
         
         if(!product) return res.status(404).send({success: false, message:'Product not found'})
-        
+            
+        if(product.status === false) return res.status(404).send({success: false, message:'Product not found'})
+
         let carts = await Cart.findOne({user: req.user.uid, status:'PENDIENT'} ).populate('product', ' -_id')
         
         if(product.stock === 0) return res.status(404).send({success:false, message:'This product is out of stock'})
@@ -36,7 +38,8 @@ export const addCart = async(req,res) =>{
                     if(!found){
                         console.log('No hay asi')
                         carts.product.push({
-                            products: product._id, 
+                            products: product._id,
+                            name: product.name, 
                             quantity: Number(data.quantity),
                             price: product.price 
                             
@@ -49,7 +52,8 @@ export const addCart = async(req,res) =>{
             let cart = new Cart({...data, user:req.user.uid})
             cart.subTotal =  product.price * Number(data.quantity)
             cart.product.push({
-                products: product._id, 
+                products: product._id,
+                name: product.name,  
                 quantity: Number(data.quantity),
                 price: product.price 
             });
@@ -65,9 +69,11 @@ export const addCart = async(req,res) =>{
 
 export const getCart = async(req,res) =>{
     try {
-        let carrito = await Cart.find().populate('product', 'name price ')
-
-        return res.send(carrito)
+        console.log(req.user.uid)
+        let carrito = await Cart.findOne({user: req.user.uid} && {status: 'PENDIENT'}).populate('product', 'name price ')
+        console.log(carrito)
+        if(carrito.length === 0)return res.status(404).send({success:false, message:'You dont have cart'})
+            return res.send({sucess:true, message:'Your cart', carrito})
     } catch (err) {
         console.error(err)
         return res.status(500).send({success:false, message:'General Error',err})

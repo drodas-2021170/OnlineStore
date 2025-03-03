@@ -5,13 +5,11 @@ import User from "../user/user.model.js"
 
 export const getBill = async(req, res) =>{
     try {
-        let {idClient}= req.body
-
-        let cliente = await User.findOne({_id:idClient})
+        let cliente = await User.findOne({_id:req.user.uid})
         
         if(!cliente) return res.status(404).send({sucess: false, message:'User not found'})
             
-        let cart = await Cart.findOne({user: idClient, status:'PENDIENT'}).populate('user', 'name surname username')
+        let cart = await Cart.findOne({user: req.user.uid, status:'PENDIENT'}).populate('user', 'name surname username')
             
         if(!cart) return res.status(404).send({sucess:false, message:'Cart not found'})
         
@@ -19,18 +17,24 @@ export const getBill = async(req, res) =>{
         for(let i = 0; i<cart.product.length; i++){
             
             let product = await Product.findOne({_id: cart.product[i].products.toString()})
-            
-            console.log(product.updateAt)
+        
             bill.product.push({
                 products: product._id,
+                name: product.name,
                 quantity: cart.product[i].quantity,
                 price: product.price,
             })
+
+            /*if(product.stock<cart.product[i].quantity){
+                await Cart.findByIdAndUpdate(cart.id, {status: 'EDIT'})
+                await bill.save()
+                return res.status(404).send({success:false, message:'Please talk with an Admin to change your bill'})
+            }*/
+
             await Product.findByIdAndUpdate(product.id, {stock: product.stock - cart.product[i].quantity})
             await Product.findByIdAndUpdate(product.id, {updateAt: product.updateAt + 1})
-            console.log(product.updateAt)   
-            
-            
+            console.log(product.stock)
+            console.log(cart.product[i].quantity)
         }
 
         if(cart.length === 0) return res.status(404).send({success:false, message:'Procesing Bill'})            
@@ -45,12 +49,12 @@ export const getBill = async(req, res) =>{
     }
 }
 
-export const getMyBill = async(req,res) =>{
+export const getClientBills = async(req,res) =>{
     try {
-        
-
-        let bill = await Bill.find({cart: cart.id})
-        return res.send({success: true, message:'Your bill', bill})
+        let {idCliente} = req.body
+        let bill = await Bill.find({user: idCliente}).populate('cart', 'subTotal')
+        if(bill.length === 0) return res.status(404).send({sucess: false, message:'No bills for this client'})
+            return res.send({success: true, message:'Your bill', bill})
     } catch (err) {
         console.error(err)
         return res.status(500).send({success:false, message:'General Error',err})
@@ -60,7 +64,7 @@ export const getMyBill = async(req,res) =>{
 export const getHystorial = async(req,res) =>{
     try {
         let bill = await Bill.find({user: req.user.uid})
-        .populate('cart', 'product subTotal')
+        .populate('cart', 'subTotal')
         .populate('user', 'name surname username -_id')
         
         if(bill.length === 0) return res.status(404).send({success:false, message:'You dont do any purchase right now'})
@@ -68,5 +72,21 @@ export const getHystorial = async(req,res) =>{
     } catch (err) {
         console.error(err)
         return res.status(500).send({success:false, message:'General Error',err})
+    }
+}
+
+export const updateBill = async(req,res) =>{
+    try {
+        let {idCliente, newIva} = req.body
+        let user = await User.findById(idCliente)
+        let cart = await Cart.findOne({user: user.id }&&{status: 'PENDIENT'})
+        let bill = await Bill.findOne({cart:cart.id})
+        await Bill.findByIdAndUpdate(bill.id,{total: cart.subTotal + (cart.subTotal* newIva)},{new:true})
+        let bill2 = await Bill.findByIdAndUpdate(bill.id,{status: 'COMPLETED'},{new:true})
+        if(!bill) return res.status(404).send({success:false, message:'Bill not updated'})
+            return res.send({success:true, message:'Bill Updated', bill2})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error', err})
     }
 }

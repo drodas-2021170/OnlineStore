@@ -23,6 +23,7 @@ export const addCategory = async(req, res) =>{
     try {
     
         let data = req.body
+        if(data.name === 'Default Category') return res.status(403).send({success:false, message:'You cannot create other Default Category'})
         let category = new Category(data)
         await category.save()
         return res.send({success: true,message: 'Category saved', category})
@@ -77,8 +78,10 @@ export const deleteCategory = async(req,res) =>{
 
         let categoryId = await Category.findOne({_id:id})
 
-        if(!categoryId) return res.status(404).send({success: false, message: 'Category not found'})
+        if(categoryId.name === 'Default Category') return res.status(403).send({success:false, message:'You cannot delete default category'})
 
+        if(!categoryId) return res.status(404).send({success: false, message: 'Category not found'})
+        
         let defaultCategory = await Category.findOne({ name: 'Default Category' });
 
         await Product.updateMany(
