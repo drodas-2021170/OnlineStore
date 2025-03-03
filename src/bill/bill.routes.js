@@ -8,6 +8,6 @@ api.post('/getBill',[validateToken], getBill)
 api.get('/',[validateToken,isAdmin],getClientBills)
 api.get('/myHistorial',[validateToken],getHystorial)
 
-api.put('/updateProduct',[validateToken], updateBill)
+api.put('/updateBill',[validateToken,isAdmin], updateBill)
 
 export default api
