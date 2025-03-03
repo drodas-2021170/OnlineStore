@@ -30,6 +30,11 @@ const billSchema = Schema(
             type: Number,
             default: 0
         },
+        status:{
+            type: String,
+            enum:['ANULED', 'PERMITED'],
+            default: 'PERMITED' 
+        },
         createdAt: {
             type: Date,
             default: Date.now
