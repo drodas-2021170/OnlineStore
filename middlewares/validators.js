@@ -75,7 +75,6 @@ export const updateProductValidate =[
     body('description', 'Description is required').optional().notEmpty(),
     body('price', 'Price is required').optional().notEmpty(),
     body('stock', 'Stock is required').optional().notEmpty(),
-    body('category', 'Category is required').optional().notEmpty(),
     validateErrors
 ]
 
