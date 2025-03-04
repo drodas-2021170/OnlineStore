@@ -88,24 +88,24 @@
 								{
 									"key": "userData",
 									"value": "ADMIN",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "admin123456789",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "userData",
 									"value": "Dili",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "1223478M*7m",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -380,7 +380,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Default Category",
+									"value": "PC",
 									"type": "text"
 								},
 								{
@@ -575,7 +575,7 @@
 								},
 								{
 									"key": "category",
-									"value": "67c5dfbf2e3d083231415595",
+									"value": "67c66190cfa60e088ffa2eff",
 									"type": "text"
 								}
 							]
@@ -905,19 +905,19 @@
 							"urlencoded": [
 								{
 									"key": "products",
-									"value": "67c5e0c42e3d0832314155aa",
+									"value": "67c66195cfa60e088ffa2f02",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "5",
-									"type": "text"
+									"value": "1",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "lessQuantity",
-									"value": "2",
-									"type": "text",
-									"disabled": true
+									"value": "0",
+									"type": "text"
 								}
 							]
 						},
@@ -985,7 +985,7 @@
 							"urlencoded": [
 								{
 									"key": "idProduct",
-									"value": "67c5e0c42e3d0832314155aa",
+									"value": "67c66195cfa60e088ffa2f02",
 									"type": "text"
 								}
 							]
@@ -1074,6 +1074,50 @@
 								"v1",
 								"bill",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBills",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "skip",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3300/v1/bill/getAllBills",
+							"host": [
+								"localhost"
+							],
+							"port": "3300",
+							"path": [
+								"v1",
+								"bill",
+								"getAllBills"
 							]
 						}
 					},
