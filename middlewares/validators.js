@@ -86,5 +86,6 @@ export const deleteProductValidate =[
 export const addCartValidate =[
     body('products', 'Introduce the id Product').notEmpty(),
     body('quantity', 'Quantity is required').optional().notEmpty().isInt({min:1}).withMessage('Please 1 product for min'),
+    body('lessQuantity', 'Quantity is required').optional().notEmpty().isInt({min:1}).withMessage('Please 1 product for min'),
     validateErrors
 ]
