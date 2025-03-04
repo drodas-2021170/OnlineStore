@@ -60,6 +60,17 @@ export const getClientBills = async(req,res) =>{
         return res.status(500).send({success:false, message:'General Error',err})
     }
 }
+export const getAllBills = async(req,res) =>{
+    try {
+        let {skip, limit} = req.body
+        let bills = await Bill.find().skip(skip).limit(limit)
+        if(bills.length === 0) return res.status(404).send({sucess:false, message:'Bills not found'})
+            return res.send({sucess: true, message:'Bills:', bills, total:bills.length})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({success:false, message:'General Error',err})
+    }
+}
 
 export const getHystorial = async(req,res) =>{
     try {
